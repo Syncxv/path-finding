@@ -9,8 +9,6 @@ function createGrid(x, y) {
         for(let j = 0; j < y; ++j) {
             createNode()
         }
-        // var jump = document.createElement("br");
-        // document.querySelector('.node-container').appendChild(jump);
     }
     contaier.style.setProperty('--x', x)
 }
