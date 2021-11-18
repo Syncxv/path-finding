@@ -13,7 +13,6 @@ function createGrid(x, y) {
         // document.querySelector('.node-container').appendChild(jump);
     }
     contaier.style.setProperty('--x', x)
-    contaier.removeChild(getContainer().lastChild)
 }
 
 function createNode() {
