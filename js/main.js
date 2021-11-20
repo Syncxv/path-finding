@@ -9,7 +9,9 @@ function createGrid(row, col) {
     const contaier = getContainer()
     const grid = gridInit(row,col)
     window.grid = grid
-    console.log(dijkstra(grid, grid[START_NODE.row][START_NODE.col], grid[END_NODE.row][END_NODE.col]))
+    const result = dijkstra(grid, grid[START_NODE.row][START_NODE.col], grid[END_NODE.row][END_NODE.col])
+    console.log(result)
+    document.getElementById('animate').addEventListener('click', () => animateIt(result))
     contaier.style.setProperty('--row', row)
     contaier.style.setProperty('--col', col)
 }
@@ -29,5 +31,13 @@ function gridInit(row, col) {
         grid.push(currentRow)
     }
     return grid
+}
+function animateIt(visited) {
+    for(let i = 0; i < visited.length; ++i) {
+        setTimeout(() => {
+            const node = visited[i].node
+            node.classList.add('visited')
+        }, 10 * i)
+    }
 }
 setUp();
