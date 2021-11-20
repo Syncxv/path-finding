@@ -36,5 +36,9 @@ body {
 }
 
 .wall {
-    background-color: black;
+    background-color: black !important;
+}
+
+.visited {
+    background-color: blue;
 }

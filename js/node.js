@@ -1,15 +1,15 @@
 const nodes = []
 let isMouseDown = false
 class _Node {
-    constructor(node) {
+    constructor(node, col, row) {
+        this.col = col
+        this.row = row
         this.node = node
-    }
-
-    get visited() {
-        return this.node.classList.contains('visited')
+        this.visited = false
+        this.distance = Infinity
     }
 }
-export function createNode(append = false) {
+export function createNode(append = false, col, row) {
     const NodeElem = document.createElement('div')
     NodeElem.classList.add('node');
     NodeElem.addEventListener('mousedown', nodeMousedownHandler)
@@ -19,7 +19,7 @@ export function createNode(append = false) {
     if(append){
         document.querySelector('.node-container').append(NodeElem)
     }
-    nodes.push(new _Node(NodeElem))
+    return new _Node(NodeElem, col, row)
 }
 // get node() {
 //     return NodeElem
