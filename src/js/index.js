@@ -21,7 +21,7 @@ function setUp() {
     document.querySelector("#clear").addEventListener('click', clearGrid)
     const input = document.querySelector("input")
     document.querySelector('#range-res').innerText = `${input.value}ms`
-    input.addEventListener('change', (e) => {
+    input.addEventListener('input', (e) => {
         document.querySelector('#range-res').innerText = `${e.target.value}ms`
     })
 }
