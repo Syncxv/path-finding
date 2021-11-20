@@ -10,8 +10,7 @@ export function dijkstra(grid, start, end) {
         if(closestNode.wall) continue
         closestNode.visited = true
         visited.push(closestNode)
-        const nearsetNodes = getNearestNodes(closestNode, grid);
-        updateNearbyNodes(nearsetNodes, closestNode);
+        updateNearbyNodes(closestNode);
         if(closestNode == end) return visited
     }
 }
@@ -19,20 +18,21 @@ export function dijkstra(grid, start, end) {
 function sortByDistance(nodes) {
     return nodes.sort((a, b) => a.distance - b.distance)
 }
-function updateNearbyNodes(nearNodes, node) {
+function updateNearbyNodes(node) {
+    const nearNodes = getNearestUnvisitedNodes(node, grid);
     nearNodes.forEach(nearNode => {
         nearNode.distance = node.distance + 1
         nearNode.prevNode = node
     })
 }
-function getNearestNodes(node, grid) {
+function getNearestUnvisitedNodes(node, grid) {
     const res = []
     const {row, col} = node
     if(grid[row+1] ) res.push(grid[row+1][col])
     if(grid[row-1] ) res.push(grid[row-1][col])
     if(grid[row][col+1] ) res.push(grid[row][col+1])
     if(grid[row][col-1] ) res.push(grid[row][col-1])
-    return res
+    return res.filter(s => !s.visited)
 }
 
 function getAllNodes() {
@@ -41,4 +41,15 @@ function getAllNodes() {
         item.forEach(node => res.push(node))    
     })
     return res
+}
+
+
+export function getShortestNodes(result, endNode) {
+    const shortestNodes = []
+    let currNode = endNode
+    while (currNode !== null) {
+        shortestNodes.unshift(currNode)
+        currNode = currNode.prevNode
+    }
+    return shortestNodes
 }

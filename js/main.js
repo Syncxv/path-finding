@@ -1,4 +1,4 @@
-import { dijkstra } from "./algorithem/dijkstra.js"
+import { dijkstra, getShortestNodes } from "./algorithem/dijkstra.js"
 import { createNode, getNodes } from "./node.js"
 const START_NODE = {row: 10, col: 5};
 const END_NODE = {row: 10, col: 45}
@@ -9,15 +9,13 @@ function createGrid(row, col) {
     const contaier = getContainer()
     const grid = gridInit(row,col)
     window.grid = grid
-    const result = dijkstra(grid, grid[START_NODE.row][START_NODE.col], grid[END_NODE.row][END_NODE.col])
-    console.log(result)
-    document.getElementById('animate').addEventListener('click', () => animateIt(result))
     contaier.style.setProperty('--row', row)
     contaier.style.setProperty('--col', col)
 }
 function setUp() {
     createGrid(20, 50)
     getContainer().ondragstart = () => (false)
+    document.querySelector('#animate').addEventListener('click', onClickHandler)
 }
 function gridInit(row, col) {
     const grid = []
@@ -32,12 +30,18 @@ function gridInit(row, col) {
     }
     return grid
 }
+function onClickHandler() {
+    const result = dijkstra(grid, grid[START_NODE.row][START_NODE.col], grid[END_NODE.row][END_NODE.col])
+    console.log(result)
+    console.log(getShortestNodes(result, grid[END_NODE.row][END_NODE.col]))
+    animateIt(result)
+}
 function animateIt(visited) {
     for(let i = 0; i < visited.length; ++i) {
         setTimeout(() => {
             const node = visited[i].node
             node.classList.add('visited')
-        }, 10 * i)
+        }, 2 * i)
     }
 }
 setUp();
