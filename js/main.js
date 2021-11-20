@@ -1,21 +1,19 @@
 import { dijkstra } from "./algorithem/dijkstra.js"
 import { createNode, getNodes } from "./node.js"
-const START_NODE = {row: 2, col: 10};
-const END_NODE = {row: 15, col: 40}
+const START_NODE = {row: 10, col: 5};
+const END_NODE = {row: 10, col: 45}
 function getContainer() {
     return document.querySelector('.node-container')
 }
-function createGrid(x, y) {
+function createGrid(row, col) {
     const contaier = getContainer()
-    const grid = gridInit(x,y)
+    const grid = gridInit(row,col)
     window.grid = grid
-    contaier.style.setProperty('--row', x)
-    contaier.style.setProperty('--col', y)
-    console.log(dijkstra(getNodes(), 0, 589))
-    window.nodes = getNodes()
+    contaier.style.setProperty('--row', row)
+    contaier.style.setProperty('--col', col)
 }
 function setUp() {
-    createGrid(50, 100)
+    createGrid(20, 50)
     getContainer().ondragstart = () => (false)
 }
 function gridInit(row, col) {
