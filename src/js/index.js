@@ -1,7 +1,9 @@
 import { dijkstra, getShortestNodes } from "./algorithem/dijkstra.js"
 import { createNode, getNodes } from "./node.js"
-const START_NODE = {row: 10, col: 5};
-const END_NODE = {row: 10, col: 45}
+const START_NODE = {row: 15, col: 5};
+const END_NODE = {row: 15, col: 75}
+const ROWS = 30;
+const COLS = 80;
 function getContainer() {
     return document.querySelector('.node-container')
 }
@@ -13,10 +15,15 @@ function createGrid(row, col) {
     contaier.style.setProperty('--col', col)
 }
 function setUp() {
-    createGrid(20, 50)
+    createGrid(ROWS, COLS)
     getContainer().ondragstart = () => (false)
     document.querySelector('#animate').addEventListener('click', onClickHandler)
     document.querySelector("#clear").addEventListener('click', clearGrid)
+    const input = document.querySelector("input")
+    document.querySelector('#range-res').innerText = `${input.value}ms`
+    input.addEventListener('change', (e) => {
+        document.querySelector('#range-res').innerText = `${e.target.value}ms`
+    })
 }
 function gridInit(row, col) {
     const grid = []
@@ -56,7 +63,7 @@ function animateIt(visited) {
                 const node = visited[i].node
                 node.classList.add('visited')
                 if(i == visited.length -1) res(true)
-            }, 10 * i)
+            }, document.querySelector("input").value * i)
            
         }
         
@@ -77,6 +84,6 @@ function animatePath(path) {
 }
 function clearGrid() {
     getContainer().innerHTML = ""
-    createGrid(20, 50)
+    createGrid(ROWS, COLS)
 }
 setUp();
