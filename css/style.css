@@ -19,9 +19,11 @@ body {
 }
 
 .node-container {
-    --x: 40;
+    --row: 40;
+    --col: 40;
     display: grid;
-    grid-template-columns: repeat(var(--x), 20px);
+    grid-template-columns: repeat(var(--col), 20px);
+    grid-template-rows: repeat(var(--row), 20px);
     width: 100%;
     height: auto;
 }
@@ -41,4 +43,12 @@ body {
 
 .visited {
     background-color: blue;
+}
+
+.start {
+    background-color: green;
+}
+
+.end {
+    background-color: red;
 }

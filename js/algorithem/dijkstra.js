@@ -1,6 +1,6 @@
 import { getNodes } from "../node.js";
 
-export function dijkstra(nodes, start, end) {
+export function dijkstra(grid, start, end) {
     //fuck sake nigga what is this
     // console.log(nodes)
     // nodes[start].distance = 0

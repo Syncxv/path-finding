@@ -9,13 +9,15 @@ class _Node {
         this.distance = Infinity
     }
 }
-export function createNode(append = false, col, row) {
+export function createNode(append = false, col, row, isStart = false, isEnd = false) {
     const NodeElem = document.createElement('div')
     NodeElem.classList.add('node');
     NodeElem.addEventListener('mousedown', nodeMousedownHandler)
     NodeElem.addEventListener('mouseenter', nodeMouseEnterHandler)
     NodeElem.addEventListener('mouseup', nodeMouseUpHandler)
     NodeElem.ondragstart = () => (false)
+    isStart ? NodeElem.classList.add('start') : null
+    isEnd ? NodeElem.classList.add('end') : null
     if(append){
         document.querySelector('.node-container').append(NodeElem)
     }
