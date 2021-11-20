@@ -52,7 +52,7 @@ async function onClickHandler() {
         await animateIt(result)
         await animatePath(path)
     } else {
-        document.write("nope not yet")
+        document.write("nope not done yet")
     }
     
 }
