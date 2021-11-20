@@ -38,11 +38,15 @@ function gridInit(row, col) {
     return grid
 }
 async function onClickHandler() {
-    const result = dijkstra(grid, grid[START_NODE.row][START_NODE.col], grid[END_NODE.row][END_NODE.col])
-    console.log(result)
-    const path = getShortestNodes(result, grid[END_NODE.row][END_NODE.col])
-    await animateIt(result)
-    await animatePath(path)
+    if(document.querySelector('select').value == "dijkstra") {
+        const result = dijkstra(grid, grid[START_NODE.row][START_NODE.col], grid[END_NODE.row][END_NODE.col])
+        console.log(result)
+        const path = getShortestNodes(result, grid[END_NODE.row][END_NODE.col])
+        await animateIt(result)
+        await animatePath(path)
+    } else {
+        document.write("nope not yet")
+    }
     
 }
 function animateIt(visited) {
