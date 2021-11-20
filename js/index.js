@@ -30,18 +30,22 @@ function gridInit(row, col) {
     }
     return grid
 }
-function onClickHandler() {
+async function onClickHandler() {
     const result = dijkstra(grid, grid[START_NODE.row][START_NODE.col], grid[END_NODE.row][END_NODE.col])
     console.log(result)
-    console.log(getShortestNodes(result, grid[END_NODE.row][END_NODE.col]))
-    animateIt(result)
+    const path = getShortestNodes(result, grid[END_NODE.row][END_NODE.col])
+    await animateIt(result)
+    path.map(s => s.node).forEach(node => node.classList.add('path'))
 }
 function animateIt(visited) {
-    for(let i = 0; i < visited.length; ++i) {
-        setTimeout(() => {
-            const node = visited[i].node
-            node.classList.add('visited')
-        }, 2 * i)
-    }
+    return new Promise((res, rej) => {
+        for(let i = 0; i < visited.length; ++i) {
+            setTimeout(() => {
+                const node = visited[i].node
+                node.classList.add('visited')
+            }, 2 * i)
+        }
+        res(true)
+    })
 }
 setUp();
