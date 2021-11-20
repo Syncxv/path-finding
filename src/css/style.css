@@ -78,19 +78,21 @@ body {
 }
 
 select {
+     /* Reset */
     appearance: none;
-    outline: 0;
     border: 0;
-    box-shadow: none;
-    flex: 1;
+    outline: 0;
+    font: inherit;
+    /* Personalize */
     width: 20em;
     height: 3em;
-    padding: 0 1em;
-    color: #000;
+    padding: 0 4em 0 1em;
+    background: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg)
+        no-repeat right 0.8em center / 1.4em,
+        linear-gradient(to left, rgba(0, 0, 0, 0.3), 3em, rgba(0, 0, 0, 0.2), 3em);
+    color: rgb(31, 31, 31);
     border-radius: 0.25em;
     box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
-    background-color: rgba(255, 255, 255, 0.2);
-    background-image: none;
     cursor: pointer;
 }
 
@@ -101,4 +103,20 @@ select {
   height: 2em;
   border-radius: .25em;
   overflow: hidden;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    padding: 1rem;
+}
+
+.head-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 2rem;
 }
