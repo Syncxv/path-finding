@@ -22,8 +22,14 @@ function gridInit(row, col) {
     for(let i = 0; i < row; ++i) {
         const currentRow = []
         for(let j = 0; j < col; ++j) {
-            if(START_NODE.row == i && START_NODE.col == j) currentRow.push(createNode(true, j, i, true))
-            if(END_NODE.row == i && END_NODE.col == j) currentRow.push(createNode(true, j, i, false, true))
+            if(START_NODE.row == i && START_NODE.col == j) {
+                currentRow.push(createNode(true, j, i, true, false))
+                continue
+            }
+            if(END_NODE.row == i && END_NODE.col == j) {
+                currentRow.push(createNode(true, j, i, false, true));
+                continue
+            }
             else currentRow.push(createNode(true, j, i))
         }
         grid.push(currentRow)

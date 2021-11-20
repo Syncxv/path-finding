@@ -16,12 +16,12 @@ class _Node {
 export function createNode(append = false, col, row, isStart = false, isEnd = false) {
     const NodeElem = document.createElement('div')
     NodeElem.classList.add('node');
+    if(isStart) NodeElem.classList.add("start")
+    if(isEnd) NodeElem.classList.add("end")
     NodeElem.addEventListener('mousedown', nodeMousedownHandler)
     NodeElem.addEventListener('mouseenter', nodeMouseEnterHandler)
     NodeElem.addEventListener('mouseup', nodeMouseUpHandler)
     NodeElem.ondragstart = () => (false)
-    isStart ? NodeElem.classList.add('start') : null
-    isEnd ? NodeElem.classList.add('end') : null
     if(append){
         document.querySelector('.node-container').append(NodeElem)
     }
