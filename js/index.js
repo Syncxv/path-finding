@@ -16,6 +16,7 @@ function setUp() {
     createGrid(20, 50)
     getContainer().ondragstart = () => (false)
     document.querySelector('#animate').addEventListener('click', onClickHandler)
+    document.querySelector("#clear").addEventListener('click', clearGrid)
 }
 function gridInit(row, col) {
     const grid = []
@@ -36,11 +37,12 @@ function gridInit(row, col) {
     }
     return grid
 }
-function onClickHandler() {
+async function onClickHandler() {
     const result = dijkstra(grid, grid[START_NODE.row][START_NODE.col], grid[END_NODE.row][END_NODE.col])
     console.log(result)
     const path = getShortestNodes(result, grid[END_NODE.row][END_NODE.col])
-    animateIt(result).then(_ => path.map(s => s.node).forEach(node => node.classList.add('path')))
+    await animateIt(result)
+    await animatePath(path)
     
 }
 function animateIt(visited) {
@@ -50,10 +52,27 @@ function animateIt(visited) {
                 const node = visited[i].node
                 node.classList.add('visited')
                 if(i == visited.length -1) res(true)
-            }, 2 * i)
+            }, 10 * i)
            
         }
         
     })
+}
+function animatePath(path) {
+    return new Promise((res, rej) => {
+        for(let i = 0; i < path.length; ++i) {
+            setTimeout(() => {
+                const node = path[i].node
+                node.classList.add('path')
+                if(i == path.length -1) res(true)
+            }, 10 * i)
+           
+        }
+        
+    })
+}
+function clearGrid() {
+    getContainer().innerHTML = ""
+    createGrid(20, 50)
 }
 setUp();

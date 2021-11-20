@@ -31,10 +31,10 @@ function updateNearbyNodes(node, grid) {
 function getNearestUnvisitedNodes(node, grid) {
     const res = []
     const {col, row} = node;
-    if (row > 0) res.push(grid[row - 1][col]);
-    if (row < grid.length - 1) res.push(grid[row + 1][col]);
-    if (col > 0) res.push(grid[row][col - 1]);
-    if (col < grid[0].length - 1) res.push(grid[row][col + 1]);
+    if(grid[row+1] ) res.push(grid[row+1][col])
+    if(grid[row-1] ) res.push(grid[row-1][col])
+    if(grid[row][col+1] ) res.push(grid[row][col+1])
+    if(grid[row][col-1] ) res.push(grid[row][col-1])
     return res.filter(s => !s.visited)
 }
 

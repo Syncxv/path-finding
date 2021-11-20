@@ -15,9 +15,9 @@ body {
     display: inline-block;
     height: var(--height);
     width:  var(--width);
-    outline: 1px solid rgb(175, 177, 255)
+    outline: 1px solid rgb(175, 177, 255);
+    /* transition: all 500ms; */
 }
-
 .node-container {
     --row: 40;
     --col: 40;
@@ -38,13 +38,33 @@ body {
 }
 
 .wall {
-    background-color: black !important;
+    background-color: rgb(17, 17, 17) !important;
+    animation: wall .5s ease-in;
 }
-
+@keyframes wall {
+    from {
+        border-radius: 50%;
+        transform: scale(0);
+    };
+    to {
+        border-radius: 0%;
+        transform: scale(1);
+    }
+}
 .visited {
-    background-color: blue;
+    background-color: rgb(21, 119, 246);
+    animation: visited .5s ease-in;
 }
-
+@keyframes visited {
+    from {
+        border-radius: 50%;
+        transform: scale(0);
+    };
+    to {
+        border-radius: 0%;
+        transform: scale(1);
+    }
+}
 .start {
     background-color: green !important;
 }
@@ -54,5 +74,31 @@ body {
 }
 
 .path {
-    background-color: yellow;
+    background-color: rgb(255, 255, 74);
+}
+
+select {
+    appearance: none;
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+    flex: 1;
+    width: 20em;
+    height: 3em;
+    padding: 0 1em;
+    color: #000;
+    border-radius: 0.25em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
+    background-image: none;
+    cursor: pointer;
+}
+
+.select {
+    position: relative;
+  display: flex;
+  width: 7em;
+  height: 2em;
+  border-radius: .25em;
+  overflow: hidden;
 }
