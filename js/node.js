@@ -7,6 +7,10 @@ class _Node {
         this.node = node
         this.visited = false
         this.distance = Infinity
+        this.prevNode = null
+    }
+    get wall() {
+        return this.node.classList.contains('wall')
     }
 }
 export function createNode(append = false, col, row, isStart = false, isEnd = false) {

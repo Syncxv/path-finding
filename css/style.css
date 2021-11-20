@@ -46,9 +46,9 @@ body {
 }
 
 .start {
-    background-color: green;
+    background-color: green !important;
 }
 
 .end {
-    background-color: red;
+    background-color: red !important;
 }

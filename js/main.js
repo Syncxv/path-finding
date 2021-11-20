@@ -9,6 +9,7 @@ function createGrid(row, col) {
     const contaier = getContainer()
     const grid = gridInit(row,col)
     window.grid = grid
+    console.log(dijkstra(grid, grid[START_NODE.row][START_NODE.col], grid[END_NODE.row][END_NODE.col]))
     contaier.style.setProperty('--row', row)
     contaier.style.setProperty('--col', col)
 }
