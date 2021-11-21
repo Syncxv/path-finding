@@ -258,6 +258,7 @@ select {
     top: 0;
     right: 0;
     cursor: pointer;
+    z-index: 4;
 }
 
 .bar1 {
@@ -286,54 +287,14 @@ select {
     height: 100%;
     z-index: 3;
 }
-.blur-bar:nth-child(1) {
-    animation: first .5s cubic-bezier(0, 0.54, 0.32, 1.01)
-}
-.blur-bar:nth-child(2) {
-    animation: second .5s cubic-bezier(0, 0.54, 0.32, 1.01) .5s;
-}
-.blur-bar:nth-child(3) {
-    animation: third .5s cubic-bezier(0, 0.54, 0.32, 1.01) 1s;
-}
-.blur-bar:nth-child(4) {
-    animation: fourth .5s cubic-bezier(0, 0.54, 0.32, 1.01) 1.5s;
-}
 .blur-bar {
     width: 25%;
     height: 100%;
     margin: 0;
-    background-color: rgb(122, 122, 122);
+    background-color: rgb(64, 67, 255);
+    transition: all .5s cubic-bezier(0, 0.54, 0.32, 1.01)
 }
 
-@keyframes first {
-    from {
-        transform: translateY(-100%);
-    };
-    to {
-        transform: translateY(0%);
-    }
-}
-@keyframes second {
-    from {
-        transform: translateY(-100%);
-    };
-    to {
-        transform: translateY(0%);
-    }
-}
-@keyframes third {
-    from {
-        transform: translateY(-100%);
-    };
-    to {
-        transform: translateY(0%);
-    }
-}
-@keyframes fourth {
-    from {
-        transform: translateY(-100%);
-    };
-    to {
-        transform: translateY(0%);
-    }
+.hide-y {
+    transform: translateY(-100%);
 }

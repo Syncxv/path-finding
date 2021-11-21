@@ -25,7 +25,22 @@ function setUp() {
     input.addEventListener('input', (e) => {
         document.querySelector('#range-res').innerText = `${e.target.value}ms`
     })
-    document.querySelector("#nav-btn").addEventListener('click', () => Array.from(document.querySelector('#nav-btn').children).forEach(item => item.classList.add("blur-bar")))
+    document.querySelector("#nav-btn").addEventListener('click', () => {
+        var bars = Array.from(document.querySelector('.main-header').children)
+        if(bars[0].classList.contains('hide-y')) {
+            for (let i = 0; i  < bars.length; ++i) {
+                setTimeout(() => {    
+                    bars[i].classList.remove('hide-y')
+                }, 600 * i)
+            }
+        } else {
+            for (let i = 0; i  < bars.length; ++i) {
+                setTimeout(() => {    
+                    bars[i].classList.add('hide-y')
+                }, 600 * i)
+            }
+        }
+    })
 }
 function gridInit(row, col) {
     const grid = []
