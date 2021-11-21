@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/Syncxv/path-finding/issues"
   },
-  "homepage": "https://github.com/Syncxv/path-finding#readme"
+  "homepage": "https://github.com/Syncxv/path-finding#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.1",
+    "gulp-sass": "^5.0.0",
+    "parcel": "^2.0.1",
+    "sass": "^1.43.4"
+  }
 }
