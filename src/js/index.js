@@ -29,12 +29,15 @@ function setUp() {
 }
 function setUpNavButton() {
     const mainHeader = document.querySelector('.main-header')
-    document.querySelector("#nav-btn").addEventListener('click', async (e) => {
+    const navButton = document.querySelector("#nav-btn")
+    navButton.addEventListener('click', async (e) => {
         if(mainHeader.children[0].classList.contains('hide-y')) {
+            navButton.classList.add('close')
             await navAnimate("show")
-            mainHeader.querySelector('.nav-content').classList.remove("transistion-delay-none", "hide-y")
+            mainHeader.querySelector('.nav-content').classList.remove("transistion-delay-none", "hide-y2")
         } else {
-            mainHeader.querySelector('.nav-content').classList.add("transistion-delay-none", "hide-y")
+            navButton.classList.remove('close')
+            mainHeader.querySelector('.nav-content').classList.add("transistion-delay-none", "hide-y2")
             await navAnimate()
         }
     })
@@ -49,7 +52,7 @@ function navAnimate(type) {
                 if(i = bars.length - 1) {
                     res(true)
                 }
-            }, 600 * i)
+            }, 300 * i)
         }
     })
 }
