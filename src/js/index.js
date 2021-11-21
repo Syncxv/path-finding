@@ -25,20 +25,31 @@ function setUp() {
     input.addEventListener('input', (e) => {
         document.querySelector('#range-res').innerText = `${e.target.value}ms`
     })
-    document.querySelector("#nav-btn").addEventListener('click', () => {
-        var bars = Array.from(document.querySelector('.main-header').children)
-        if(bars[0].classList.contains('hide-y')) {
-            for (let i = 0; i  < bars.length; ++i) {
-                setTimeout(() => {    
-                    bars[i].classList.remove('hide-y')
-                }, 600 * i)
-            }
+    setUpNavButton()
+}
+function setUpNavButton() {
+    const mainHeader = document.querySelector('.main-header')
+    document.querySelector("#nav-btn").addEventListener('click', async (e) => {
+        if(mainHeader.children[0].classList.contains('hide-y')) {
+            await navAnimate("show")
+            mainHeader.querySelector('.nav-content').classList.remove("transistion-delay-none", "hide-y")
         } else {
-            for (let i = 0; i  < bars.length; ++i) {
-                setTimeout(() => {    
-                    bars[i].classList.add('hide-y')
-                }, 600 * i)
-            }
+            mainHeader.querySelector('.nav-content').classList.add("transistion-delay-none", "hide-y")
+            await navAnimate()
+        }
+    })
+}
+function navAnimate(type) {
+    return new Promise((res, rej) => {
+        var bars = Array.from(document.querySelector('.main-header').children)
+        for (let i = 0; i  < bars.length; ++i) {
+            setTimeout(() => {
+                if(!bars[i].classList.contains('nav-content')) 
+                    type === "show" ? bars[i].classList.remove('hide-y') : bars[i].classList.add('hide-y');
+                if(i = bars.length - 1) {
+                    res(true)
+                }
+            }, 600 * i)
         }
     })
 }
