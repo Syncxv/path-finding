@@ -1,13 +1,15 @@
 const nodes = []
 let isMouseDown = false
 class _Node {
-    constructor(node, col, row) {
+    constructor(node, col, row, isStart, isEnd) {
         this.col = col
         this.row = row
         this.node = node
         this.visited = false
         this.distance = Infinity
         this.prevNode = null
+        this.isStart = isStart
+        this.isEnd = isEnd
     }
     get wall() {
         return this.node.classList.contains('wall')
@@ -25,18 +27,8 @@ export function createNode(append = false, col, row, isStart = false, isEnd = fa
     if(append){
         document.querySelector('.node-container').append(NodeElem)
     }
-    return new _Node(NodeElem, col, row)
+    return new _Node(NodeElem, col, row, isStart, isEnd)
 }
-// get node() {
-//     return NodeElem
-// },
-// get visited() {
-//     return NodeElem.classList.contains('visited')
-// },
-// get distance() {
-//     return Infinity
-// },
-
 
 function nodeMousedownHandler(e) {
     isMouseDown = true

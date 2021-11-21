@@ -1,9 +1,9 @@
 import { dijkstra, getShortestNodes } from "./algorithem/dijkstra.js"
 import { createNode, getNodes } from "./node.js"
 const START_NODE = {row: 15, col: 5};
-const END_NODE = {row: 15, col: 75}
+const END_NODE = {row: 15, col: 35}
 const ROWS = 30;
-const COLS = 80;
+const COLS = 40;
 function getContainer() {
     return document.querySelector('.node-container')
 }
