@@ -30,15 +30,19 @@ function setUp() {
 function setUpNavButton() {
     const mainHeader = document.querySelector('.main-header')
     const navButton = document.querySelector("#nav-btn")
+    const navContent = mainHeader.querySelector('.nav-content')
     navButton.addEventListener('click', async (e) => {
         if(mainHeader.children[0].classList.contains('hide-y')) {
+            mainHeader.style.zIndex = 3
             navButton.classList.add('close')
             await navAnimate("show")
-            mainHeader.querySelector('.nav-content').classList.remove("transistion-delay-none", "hide-y2")
+            navContent.classList.remove("transistion-delay-none", "hide-y2")
+
         } else {
             navButton.classList.remove('close')
-            mainHeader.querySelector('.nav-content').classList.add("transistion-delay-none", "hide-y2")
+            navContent.classList.add("transistion-delay-none", "hide-y2")
             await navAnimate()
+            setTimeout(() => mainHeader.style.zIndex = 0, 1200,)
         }
     })
 }
