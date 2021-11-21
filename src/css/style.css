@@ -7,7 +7,8 @@
 
 body {
     background-color: hsl(0, 0%, 100%);
-    font-family: 'Poppins', 'sans-serif'
+    font-family: 'Poppins', 'sans-serif';
+    overflow: hidden;
 }
 
 
@@ -261,20 +262,45 @@ select {
     width: var(--width);
     background-color: black;
     margin: var(--space) 0;
+    transition: transform 500ms ease;
 }
 .bar2 {
     height: var(--height);
     width: calc(var(--width) - 4px);
     background-color: black;
     margin: var(--space) 0;
+    transition: transform 500ms ease;
 }
 .bar3 {
     height: var(--height);
     width: var(--width);
     background-color: black;
     margin: var(--space) 0;
+    transition: transform 500ms ease;
 }
-
+/* .icon.close {
+    background-color: black;
+    width: 40px;
+    border-radius: 50%;
+}
+.icon.close > * {
+    background-color: white;
+} maybe */
+.icon.close > * {
+    mix-blend-mode: difference;
+} 
+/* welp the one above didnt work :| */
+.icon.close > #bar2 {
+    transform: translateX(10rem);
+}
+.icon.close > #bar1 {
+    transform: rotate(
+45deg) translate(8px, 10px);
+}
+.icon.close > #bar3 {
+    transform: rotate(
+-45deg) translate(2px, -4px);
+}
 .main-header {
     position: fixed;
     display: flex;
