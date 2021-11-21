@@ -29,6 +29,7 @@ function setUp() {
 }
 function setUpNavButton() {
     const mainHeader = document.querySelector('.main-header')
+    mainHeader.style.zIndex = 0
     const navButton = document.querySelector("#nav-btn")
     const navContent = mainHeader.querySelector('.nav-content')
     navButton.addEventListener('click', async (e) => {
