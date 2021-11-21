@@ -44,7 +44,7 @@ body {
     background-color: rgb(17, 17, 17) !important;
     animation: wall .5s ease-in;
 }
-@keyframes wall {
+/* @keyframes wall {
     from {
         border-radius: 50%;
         transform: scale(0);
@@ -53,7 +53,7 @@ body {
         border-radius: 0%;
         transform: scale(1);
     }
-}
+} */
 .visited {
     background-color: rgb(21, 119, 246);
     animation: visited .5s ease-in;

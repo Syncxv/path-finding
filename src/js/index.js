@@ -29,7 +29,7 @@ function setUp() {
 }
 function setUpNavButton() {
     const mainHeader = document.querySelector('.main-header')
-    mainHeader.style.zIndex = 0
+    mainHeader.style.zIndex = -4
     const navButton = document.querySelector("#nav-btn")
     const navContent = mainHeader.querySelector('.nav-content')
     navButton.addEventListener('click', async (e) => {
@@ -43,7 +43,7 @@ function setUpNavButton() {
             navButton.classList.remove('close')
             navContent.classList.add("transistion-delay-none", "hide-y2")
             await navAnimate()
-            setTimeout(() => mainHeader.style.zIndex = 0, 1200,)
+            setTimeout(() => mainHeader.style.zIndex = -4, 1200,)
         }
     })
 }
