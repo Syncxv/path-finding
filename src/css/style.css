@@ -243,3 +243,17 @@ select {
     font-size: 40px;
     cursor: pointer;
 }
+
+
+.icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.bar1 {
+    height: 2px;
+    width: 10px;
+    background-color: black;
+}
+

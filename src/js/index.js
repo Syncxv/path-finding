@@ -17,6 +17,7 @@ function createGrid(row, col) {
 function setUp() {
     createGrid(ROWS, COLS)
     getContainer().ondragstart = () => (false)
+    getContainer().oncontextmenu = () => (false)
     document.querySelector('#animate').addEventListener('click', onClickHandler)
     document.querySelector("#clear").addEventListener('click', clearGrid)
     const input = document.querySelector("input")

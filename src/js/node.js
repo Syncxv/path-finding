@@ -1,5 +1,6 @@
-const nodes = []
-let isMouseDown = false
+const nodes = [];
+let isLeftMouseDown = false;
+let isRightMouseDown = false;
 class _Node {
     constructor(node, col, row, isStart, isEnd) {
         this.col = col
@@ -24,6 +25,7 @@ export function createNode(append = false, col, row, isStart = false, isEnd = fa
     NodeElem.addEventListener('mouseenter', nodeMouseEnterHandler)
     NodeElem.addEventListener('mouseup', nodeMouseUpHandler)
     NodeElem.ondragstart = () => (false)
+    NodeElem.oncontextmenu = () => (false)
     if(append){
         document.querySelector('.node-container').append(NodeElem)
     }
@@ -31,17 +33,41 @@ export function createNode(append = false, col, row, isStart = false, isEnd = fa
 }
 
 function nodeMousedownHandler(e) {
-    isMouseDown = true
+    switch (e.which) {
+        case 1: 
+            isLeftMouseDown = true
+            break;
+        case 2: 
+            alert('middle'); 
+            break;
+        case 3: 
+            isRightMouseDown = true
+            break; 
+    }
     
 }
 function nodeMouseEnterHandler(e) {
-    if(!e.target.classList.contains('wall') && isMouseDown) {
+    if(!e.target.classList.contains('wall') && isLeftMouseDown) {
         console.log(e)
         e.target.classList.add('wall')
     }
+    else if(e.target.classList.contains('wall') && isRightMouseDown) {
+        console.log(e)
+        e.target.classList.remove('wall')
+    }
 }
 function nodeMouseUpHandler(e) {
-    isMouseDown = false
+    switch (e.which) {
+        case 1: 
+            isLeftMouseDown = false
+            break;
+        case 2: 
+            alert('middle'); 
+            break;
+        case 3: 
+            isRightMouseDown = false
+            break; 
+    }
 }
 
 export function getNodes() {
