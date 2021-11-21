@@ -196,7 +196,7 @@ select {
 
   #test {
     position: absolute;
-    z-index: 10;
+    z-index: 2;
     right: 0;
     top: 0;
     bottom: 0;
@@ -246,14 +246,94 @@ select {
 
 
 .icon {
+    --space: .2rem;
+    --height: 2px;
+    --width: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: absolute;
+    margin: 2rem;
     top: 0;
     right: 0;
+    cursor: pointer;
 }
 
 .bar1 {
-    height: 2px;
-    width: 10px;
+    height: var(--height);
+    width: var(--width);
     background-color: black;
+    margin: var(--space) 0;
+}
+.bar2 {
+    height: var(--height);
+    width: calc(var(--width) - 4px);
+    background-color: black;
+    margin: var(--space) 0;
+}
+.bar3 {
+    height: var(--height);
+    width: var(--width);
+    background-color: black;
+    margin: var(--space) 0;
 }
 
+.main-header {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+.blur-bar:nth-child(1) {
+    animation: first .5s cubic-bezier(0, 0.54, 0.32, 1.01)
+}
+.blur-bar:nth-child(2) {
+    animation: second .5s cubic-bezier(0, 0.54, 0.32, 1.01) .5s;
+}
+.blur-bar:nth-child(3) {
+    animation: third .5s cubic-bezier(0, 0.54, 0.32, 1.01) 1s;
+}
+.blur-bar:nth-child(4) {
+    animation: fourth .5s cubic-bezier(0, 0.54, 0.32, 1.01) 1.5s;
+}
+.blur-bar {
+    width: 25%;
+    height: 100%;
+    margin: 0;
+    background-color: rgb(122, 122, 122);
+}
+
+@keyframes first {
+    from {
+        transform: translateY(-100%);
+    };
+    to {
+        transform: translateY(0%);
+    }
+}
+@keyframes second {
+    from {
+        transform: translateY(-100%);
+    };
+    to {
+        transform: translateY(0%);
+    }
+}
+@keyframes third {
+    from {
+        transform: translateY(-100%);
+    };
+    to {
+        transform: translateY(0%);
+    }
+}
+@keyframes fourth {
+    from {
+        transform: translateY(-100%);
+    };
+    to {
+        transform: translateY(0%);
+    }
+}

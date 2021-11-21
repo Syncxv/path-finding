@@ -25,6 +25,7 @@ function setUp() {
     input.addEventListener('input', (e) => {
         document.querySelector('#range-res').innerText = `${e.target.value}ms`
     })
+    document.querySelector("#nav-btn").addEventListener('click', () => Array.from(document.querySelector('#nav-btn').children).forEach(item => item.classList.add("blur-bar")))
 }
 function gridInit(row, col) {
     const grid = []
